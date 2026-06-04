@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="card">
+  <h2>Upload File</h2>
+  <form method="post" enctype="multipart/form-data">
+    <label for="file">Pilih file</label>
+    <input type="file" id="file" name="file" required />
+    <button type="submit">Upload</button>
+  </form>
+</section>
+
+<section class="card">
+  <h3>File yang Sudah Diunggah</h3>
+  {% if uploads %}
+    <ul class="list">
+      {% for item in uploads %}
+        <li>{{ item.filename }} - {{ item.uploaded_at }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Belum ada upload.</p>
+  {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="card">
+  <h2>Form Komentar</h2>
+  <form method="post">
+    <label for="comment">Tulis komentar</label>
+    <textarea id="comment" name="comment" rows="4" placeholder="Masukkan komentar Anda..." required></textarea>
+    <button type="submit">Kirim Komentar</button>
+  </form>
+</section>
+
+<section class="card">
+  <h3>Komentar Terakhir</h3>
+  {% if comments %}
+    <ul class="list">
+      {% for item in comments %}
+        <li>
+          <strong>{{ item.username }}</strong> <span class="muted">({{ item.created_at }})</span>
+          <p>{{ item.comment }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Belum ada komentar.</p>
+  {% endif %}
+</section>
+{% endblock %}

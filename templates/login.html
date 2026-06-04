@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="card">
+  <h2>Login</h2>
+  <form method="post">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" placeholder="student" required />
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="learn123" required />
+
+    <button type="submit">Masuk</button>
+  </form>
+  <p class="note">Akun default: <strong>student</strong> / <strong>learn123</strong></p>
+</section>
+{% endblock %}

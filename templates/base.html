@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ethical hacking playground</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>ethical hacking playground</h1>
+      <nav>
+        {% if session.username %}
+          <a href="{{ url_for('profile') }}">Profil</a>
+          <a href="{{ url_for('comment') }}">Komentar</a>
+          <a href="{{ url_for('search') }}">Pencarian</a>
+          <a href="{{ url_for('upload') }}">Upload</a>
+          <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+          <a href="{{ url_for('login') }}">Login</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="messages">
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Learning web security locally with Flask and SQLite.</p>
+    </div>
+  </footer>
+</body>
+</html>

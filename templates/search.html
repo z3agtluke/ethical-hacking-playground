@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="card">
+  <h2>Pencarian Komentar</h2>
+  <form method="post">
+    <label for="query">Kata kunci</label>
+    <input type="text" id="query" name="query" value="{{ query }}" placeholder="Cari komentar..." required />
+    <button type="submit">Cari</button>
+  </form>
+</section>
+
+<section class="card">
+  <h3>Hasil Pencarian</h3>
+  {% if results %}
+    <ul class="list">
+      {% for item in results %}
+        <li>
+          <strong>{{ item.username }}</strong> <span class="muted">({{ item.created_at }})</span>
+          <p>{{ item.comment }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Tidak ada hasil yang cocok.</p>
+  {% endif %}
+</section>
+{% endblock %}

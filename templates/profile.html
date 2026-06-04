@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="card">
+  <h2>Profil Pengguna</h2>
+  <p><strong>Username:</strong> {{ user.username }}</p>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>Jumlah komentar:</strong> {{ comment_count }}</p>
+
+  <h3>Upload Terakhir</h3>
+  {% if uploads %}
+    <ul class="list">
+      {% for upload in uploads %}
+        <li>{{ upload.filename }} - {{ upload.uploaded_at }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Tidak ada file yang diupload.</p>
+  {% endif %}
+</section>
+{% endblock %}
